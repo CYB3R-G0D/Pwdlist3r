@@ -1,5 +1,17 @@
 from itertools import permutations
 
+print("""
+                  _ _ _     _   _____
+ _ ____      ____| | (_)___| |_|___ / _ __
+| '_ \ \ /\ / / _` | | / __| __| |_ \| '__|
+| |_) \ V  V | (_| | | \__ | |_ ___) | |
+| .__/ \_/\_/ \__,_|_|_|___/\__|____/|_|
+|_|
+# generate user password wordlist for a brute-force attack
+# script by @cyb3r-g0d
+# Thanks to Dhushyanth
+    """ )
+
 first_name = input('First name: ').lower()
 while len(first_name) == 0 or first_name == ' ' or first_name == '  ' or first_name == '   'or first_name == '    'or first_name == '     ':
     print('\n''[*]You must enter a name at least!')

@@ -89,3 +89,11 @@ for i in permut():
     file.write(i)
     file.write('\n')
 file.close()
+
+def repeat():
+    lines = open(f'{first_name}''.txt', 'r').readlines()
+    lines_set = set(lines)
+    final  = open(f'{first_name}''.txt', 'w')
+    for line in lines_set:
+        final.write(line)
+repeat()    

@@ -83,6 +83,38 @@ pbirthdate_yyyy = pbirthdate[-4:]
 
 print('\n')
 
+cfirst_name = input('Child first name: ').lower()
+cfirst_name_3 = cfirst_name[:3]
+cfirst_name_c = cfirst_name.capitalize()
+cfirst_name_3_c = cfirst_name_3.capitalize()
+
+csecond_name = input('Child second name: ').lower()
+csecond_name_3 = csecond_name[:3]
+csecond_name_c = csecond_name.capitalize()
+csecond_name_3_c = csecond_name_3.capitalize() 
+
+csurname = input('Child surname: ').lower()
+csurname_3 = csurname[:3]
+csurname_c = csurname.capitalize()
+csurname_3_c = csurname_3.capitalize()
+
+cnickname = input('Child nickname: ').lower()
+cnickname_3 = cnickname[:3]
+cnickname_c = cnickname.capitalize()
+cnickname_3_c = cnickname_3.capitalize()
+
+cbirthdate = input('Child birthdate (DDMMYYYY): ')
+cbirthdate_d = cbirthdate[:1]
+cbirthdate_dd = cbirthdate[:2]
+cbirthdate_m = cbirthdate[3:4]
+cbirthdate_mm = cbirthdate[2:4]
+cbirthdate_y = cbirthdate[4:6]
+cbirthdate_yy = cbirthdate[-2:]
+cbirthdate_yyy = cbirthdate[-3:]
+cbirthdate_yyyy = cbirthdate[-4:]
+
+print('\n')
+
 petname = input('Pet name: ').lower()
 petname_3 = petname[:3]
 petname_c = petname.capitalize()
@@ -110,7 +142,7 @@ print('\n')
 
 schar = input('want to include special character? (y/n): ')
 if schar == 'y':
-    special_char = input('Please enter the characters, separated by comma. [i.e.@,$,!], spaces will be removed: ').split(',')
+    special_char = '!,@,#,$,%,^,&,*,(,),_,-,+'.split(',')
     if len(special_char)==0:
         pass
     else:
@@ -128,6 +160,7 @@ def permut():
        psurname,psurname_3,psurname_c,psurname_3_c,
        pbirthdate,pbirthdate_d,pbirthdate_dd,pbirthdate_m,pbirthdate_mm,pbirthdate_y,pbirthdate_yy,pbirthdate_yyy,pbirthdate_yyyy,
        petname,petname_3,petname_c,petname_3_c,
+       cbirthdate,cbirthdate_d,cbirthdate_dd,cbirthdate_m,cbirthdate_mm,cbirthdate_y,cbirthdate_yy,cbirthdate_yyy,cbirthdate_yyyy,
        ]
     c=[]
     if stext:

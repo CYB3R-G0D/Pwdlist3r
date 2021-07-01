@@ -3,12 +3,11 @@
 
 ![pyversions](https://img.shields.io/badge/python-3.5%20%7C%203.6%20%7C%203.7-blue)
 ![Build Status](https://img.shields.io/badge/Status-Development-blue)
-![Coverage](https://img.shields.io/badge/coverage-90%25-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
 ## About
 
-Pwdlist3r is a simple python tool to generate user password wordlist. Weak passwords can be easily guessed using pwdlist3r by target's informations such as the name of the person, nickname or birthdate.
+Pwdlist3r is a simple python tool to generate user password wordlist. Weak passwords can be easily guessed using pwdlist3r by target's informations like the nickname or birthdate.
 
 ## Requirements
 

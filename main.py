@@ -9,6 +9,7 @@ print("""
 |_|
 # generate user password wordlist for a brute-force attack
 # script by @cyb3r-g0d
+# further contributions by Sam Godson
 # thanks to Dhushyanth
     """ )
 
@@ -195,4 +196,4 @@ def repeat():
     final  = open(f'{first_name}''.txt', 'w')
     for line in lines_set:
         final.write(line)
-repeat()    
+repeat()

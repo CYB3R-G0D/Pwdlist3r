@@ -1,3 +1,4 @@
+
 from itertools import permutations
 
 print("""
@@ -9,16 +10,18 @@ print("""
 |_|
 # generate user password wordlist for a brute-force attack
 # script by @cyb3r-g0d
-# thanks to Dhushyanth
-    """ )
+# thanks to Dhushyanth, Sam Godson
+    """)
+
+a = []
 
 first_name = input('First name: ').lower()
-while len(first_name) == 0 or first_name == ' ' or first_name == '  ' or first_name == '   'or first_name == '    'or first_name == '     ':
+while len(first_name) == 0 or first_name == ' ' or first_name == '  ' or first_name == '   ' or first_name == '    ' or first_name == '     ':
     print('\n''[*]You must enter a name at least!')
     first_name = input('First name: ').lower()
 first_name_c = first_name.capitalize()
 first_name_3 = first_name[:3]
-first_name_3_c = first_name_3 .capitalize()    
+first_name_3_c = first_name_3 .capitalize()
 
 
 second_name = input('Second name: ').lower()
@@ -59,7 +62,7 @@ pfirst_name_3_c = pfirst_name_3.capitalize()
 psecond_name = input('Partner second name: ').lower()
 psecond_name_3 = psecond_name[:3]
 psecond_name_c = psecond_name.capitalize()
-psecond_name_3_c = psecond_name_3.capitalize() 
+psecond_name_3_c = psecond_name_3.capitalize()
 
 psurname = input('Partner surname: ').lower()
 psurname_3 = psurname[:3]
@@ -91,7 +94,7 @@ cfirst_name_3_c = cfirst_name_3.capitalize()
 csecond_name = input('Child second name: ').lower()
 csecond_name_3 = csecond_name[:3]
 csecond_name_c = csecond_name.capitalize()
-csecond_name_3_c = csecond_name_3.capitalize() 
+csecond_name_3_c = csecond_name_3.capitalize()
 
 csurname = input('Child surname: ').lower()
 csurname_3 = csurname[:3]
@@ -124,9 +127,12 @@ print('\n')
 
 stext = input('want to include special words? (y/n): ')
 if stext == 'y':
-    special_text = input('Please enter the some special words, separated by comma. [i.e. professor,singer,flowers], spaces will be removed: ').lower()
+    special_text = input(
+        'Please enter the some special words, separated by comma. [i.e. professor,singer,flowers], spaces will be removed: ').lower()
     special_word = special_text.split(',')
-   
+    for i in special_word:
+        a.append(i)
+
 else:
     pass
 
@@ -134,7 +140,10 @@ print('\n')
 
 snum = input('want to include special numbers? (y/n): ')
 if snum == 'y':
-    special_num = input('Please enter some special numbers, separated by comma. [i.e. 1,22,123], spaces will be removed: ').split(',')
+    special_num = input(
+        'Please enter some special numbers, separated by comma. [i.e. 1,22,123], spaces will be removed: ').split(',')
+    for x in special_num:
+        a.append(x)
 else:
     pass
 
@@ -143,56 +152,50 @@ print('\n')
 schar = input('want to include special character? (y/n): ')
 if schar == 'y':
     special_char = '!,@,#,$,%,^,&,*,(,),_,-,+'.split(',')
-    if len(special_char)==0:
+    if len(special_char) == 0:
         pass
     else:
-        p=1
+        p = 1
+    for x in special_char:
+        a.append(x)
 else:
     pass
 
+
 def permut():
-    a=[first_name,first_name_c,first_name_3,first_name_3_c,
-       second_name,second_name_3,second_name_c,second_name_3_c,
-       surname,surname_3,surname_c,surname_3_c,
-       birthdate,birthdate_d,birthdate_dd,birthdate_m,birthdate_mm,birthdate_y,birthdate_yy,birthdate_yyy,birthdate_yyyy,
-       pfirst_name,pfirst_name_c,pfirst_name_3,pfirst_name_3_c,
-       psecond_name,psecond_name_3,psecond_name_c,psecond_name_3_c,
-       psurname,psurname_3,psurname_c,psurname_3_c,
-       pbirthdate,pbirthdate_d,pbirthdate_dd,pbirthdate_m,pbirthdate_mm,pbirthdate_y,pbirthdate_yy,pbirthdate_yyy,pbirthdate_yyyy,
-       petname,petname_3,petname_c,petname_3_c,
-       cbirthdate,cbirthdate_d,cbirthdate_dd,cbirthdate_m,cbirthdate_mm,cbirthdate_y,cbirthdate_yy,cbirthdate_yyy,cbirthdate_yyyy,
-       ]
-    c=[]
-    if stext:
-        for i in special_word:
-            a.append(i)
-    else:
-        pass
-    if snum:
-        for x in special_num:
-            a.append(x)
-    else:
-        pass
-    if schar:
-        for x in special_char:
-            a.append(x)
-    else:
-        pass
-    b=list(permutations(a,2))
-    for o in range(0,len(b)):
-        if len(b[o][0]+b[o][1])>=6: 
+    a = [
+        first_name, first_name_c, first_name_3, first_name_3_c,
+        second_name, second_name_3, second_name_c, second_name_3_c,
+        surname, surname_3, surname_c, surname_3_c,
+        birthdate, birthdate_d, birthdate_dd, birthdate_m, birthdate_mm, birthdate_y, birthdate_yy, birthdate_yyy, birthdate_yyyy,
+        pfirst_name, pfirst_name_c, pfirst_name_3, pfirst_name_3_c,
+        psecond_name, psecond_name_3, psecond_name_c, psecond_name_3_c,
+        psurname, psurname_3, psurname_c, psurname_3_c,
+        pbirthdate, pbirthdate_d, pbirthdate_dd, pbirthdate_m, pbirthdate_mm, pbirthdate_y, pbirthdate_yy, pbirthdate_yyy, pbirthdate_yyyy,
+        petname, petname_3, petname_c, petname_3_c,
+        cbirthdate, cbirthdate_d, cbirthdate_dd, cbirthdate_m, cbirthdate_mm, cbirthdate_y, cbirthdate_yy, cbirthdate_yyy, cbirthdate_yyyy,
+    ]
+    c = []
+    b = list(permutations(a, 2))
+    for o in range(0, len(b)):
+        if len(b[o][0]+b[o][1]) >= 6:
             c.append(b[o][0]+b[o][1])
     return c
-file = open(f'{first_name}''.txt','a')
+
+
+file = open(f'{first_name}''.txt', 'a')
 for i in permut():
     file.write(i)
     file.write('\n')
 file.close()
 
+
 def repeat():
     lines = open(f'{first_name}''.txt', 'r').readlines()
     lines_set = set(lines)
-    final  = open(f'{first_name}''.txt', 'w')
+    final = open(f'{first_name}''.txt', 'w')
     for line in lines_set:
         final.write(line)
-repeat()    
+
+
+repeat()

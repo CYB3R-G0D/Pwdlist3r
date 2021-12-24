@@ -132,7 +132,6 @@ if stext == 'y':
     special_word = special_text.split(',')
     for i in special_word:
         a.append(i)
-
 else:
     pass
 
@@ -163,8 +162,7 @@ else:
 
 
 def permut():
-    a = [
-        first_name, first_name_c, first_name_3, first_name_3_c,
+    my_list = [first_name, first_name_c, first_name_3, first_name_3_c,
         second_name, second_name_3, second_name_c, second_name_3_c,
         surname, surname_3, surname_c, surname_3_c,
         birthdate, birthdate_d, birthdate_dd, birthdate_m, birthdate_mm, birthdate_y, birthdate_yy, birthdate_yyy, birthdate_yyyy,
@@ -175,10 +173,11 @@ def permut():
         petname, petname_3, petname_c, petname_3_c,
         cbirthdate, cbirthdate_d, cbirthdate_dd, cbirthdate_m, cbirthdate_mm, cbirthdate_y, cbirthdate_yy, cbirthdate_yyy, cbirthdate_yyyy,
     ]
+    my_list.extend(a)
     c = []
-    b = list(permutations(a, 2))
+    b = list(permutations(my_list, 2))
     for o in range(0, len(b)):
-        if len(b[o][0]+b[o][1]) >= 6:
+        if len(b[o][0]+b[o][1])>=6:
             c.append(b[o][0]+b[o][1])
     return c
 

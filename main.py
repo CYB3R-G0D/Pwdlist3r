@@ -179,6 +179,12 @@ def permut():
     for o in range(0, len(b)):
         if len(b[o][0]+b[o][1])>=6:
             c.append(b[o][0]+b[o][1])
+    for k in my_list:
+        for o in range(0, len(b)):
+            if len(b[o][0]+b[o][1])>=6:
+                c.append(b[o][0]+k+b[o][1])
+                c.append(b[o][0]+b[o][1]+k)
+                c.append(k+b[o][0]+b[o][1])
     return c
 
 

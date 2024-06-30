@@ -1,99 +1,75 @@
 from itertools import permutations
 
+# Input data
 first_name = 'emmitt'
-first_name_c = first_name.capitalize()
-first_name_3 = first_name[:3]
-first_name_3_c = first_name_3 .capitalize()    
-
 second_name = 'romano'
-second_name_3 = second_name[:3]
-second_name_c = second_name.capitalize()
-second_name_3_c = second_name_3.capitalize()
-
 surname = 'howard'
-surname_3 = surname[:3]
-surname_c = surname.capitalize()
-surname_3_c = surname_3.capitalize()
-
 birthdate = '15081947'
-birthdate_d = birthdate[:1]
-birthdate_dd = birthdate[:2]
-birthdate_m = birthdate[3:4]
-birthdate_mm = birthdate[2:4]
-birthdate_y = birthdate[4:6]
-birthdate_yy = birthdate[-2:]
-birthdate_yyy = birthdate[-3:]
-birthdate_yyyy = birthdate[-4:]
 
 pfirst_name = 'melissa'
-pfirst_name_3 = pfirst_name[:3]
-pfirst_name_c = pfirst_name.capitalize()
-pfirst_name_3_c = pfirst_name_3.capitalize()
-
 psecond_name = 'hoggan'
-psecond_name_3 = psecond_name[:3]
-psecond_name_c = psecond_name.capitalize()
-psecond_name_3_c = psecond_name_3.capitalize() 
-
 pnickname = 'davis'
-pnickname_3 = pnickname[:3]
-pnickname_c = pnickname.capitalize()
-pnickname_3_c = pnickname_3.capitalize()
-
 pbirthdate = '01051959'
-pbirthdate_d = pbirthdate[:1]
-pbirthdate_dd = pbirthdate[:2]
-pbirthdate_m = pbirthdate[3:4]
-pbirthdate_mm = pbirthdate[2:4]
-pbirthdate_y = pbirthdate[4:6]
-pbirthdate_yy = pbirthdate[-2:]
-pbirthdate_yyy = pbirthdate[-3:]
-pbirthdate_yyyy = pbirthdate[-4:]
 
 petname = 'baibre'
-petname_3 = petname[:3]
-petname_c = petname.capitalize()
-petname_3_c = petname_3.capitalize()
 
 special_text = 'flowers,fish,goat'
-special_word = special_text.split(',')
+special_num = '1,22,123'
 
-snum = '1,22,123'
-special_num = snum.split(',')
+# Functions to generate variations
+def capitalize_variations(name):
+    return [name, name.capitalize(), name[:3], name[:3].capitalize()]
 
+def date_variations(date):
+    return [
+        date, date[:2], date[2:4], date[4:6], date[6:], date[:4], date[-2:], date[-3:], date[-4:]
+    ]
 
+# Generate permutations
 def permut():
-    a=[first_name,first_name_c,first_name_3,first_name_3_c,
-       second_name,second_name_3,second_name_c,second_name_3_c,
-       surname,surname_3,surname_c,surname_3_c,
-       birthdate,birthdate_d,birthdate_dd,birthdate_m,birthdate_mm,birthdate_y,birthdate_yy,birthdate_yyy,birthdate_yyyy,
-       pfirst_name,pfirst_name_c,pfirst_name_3,pfirst_name_3_c,
-       psecond_name,psecond_name_3,psecond_name_c,psecond_name_3_c,
-       pnickname,pnickname_3,pnickname_c,pnickname_3_c,
-       pbirthdate,pbirthdate_d,pbirthdate_dd,pbirthdate_m,pbirthdate_mm,pbirthdate_y,pbirthdate_yy,pbirthdate_yyy,pbirthdate_yyyy,
-       petname,petname_3,petname_c,petname_3_c
-       ]
-    c=[]
-    for i in special_word:
-        a.append(i)
-    for x in special_num:
-        a.append(x)
-    b=list(permutations(a,2))
-    for o in range(0,len(b)):
-        if len(b[o][0]+b[o][1])>=6: 
-            c.append(b[o][0]+b[o][1])
-    return c
-file = open(f'{first_name}''.txt','a')
-for i in permut():
-    print([f'{first_name}''.txt'], i)
-    file.write(i)
-    file.write('\n')
-file.close()
+    a = (
+        capitalize_variations(first_name) +
+        capitalize_variations(second_name) +
+        capitalize_variations(surname) +
+        date_variations(birthdate) +
+        capitalize_variations(pfirst_name) +
+        capitalize_variations(psecond_name) +
+        capitalize_variations(pnickname) +
+        date_variations(pbirthdate) +
+        [petname, petname.capitalize(), petname[:3], petname[:3].capitalize()]
+    )
 
-def repeat():
-    lines = open(f'{first_name}''.txt', 'r').readlines()
-    lines_set = set(lines)
-    final  = open(f'{first_name}''.txt', 'w')
-    for line in lines_set:
-        final.write(line)
-repeat()    
+    special_word = special_text.split(',')
+    special_numbers = special_num.split(',')
+    
+    a.extend(special_word)
+    a.extend(special_numbers)
+    
+    c = []
+    b = list(permutations(a, 2))
+    
+    for pair in b:
+        if len(pair[0] + pair[1]) >= 6:
+            c.append(pair[0] + pair[1])
+    
+    return c
+
+# Save permutations to file and remove duplicates
+def save_to_file(filename, data):
+    with open(filename, 'w') as file:
+        for item in data:
+            file.write(f"{item}\n")
+
+def remove_duplicates(filename):
+    with open(filename, 'r') as file:
+        lines = set(file.readlines())
+    with open(filename, 'w') as file:
+        file.writelines(lines)
+
+# File operations
+filename = f'{first_name}.txt'
+wordlist = permut()
+save_to_file(filename, wordlist)
+remove_duplicates(filename)
+
+print(f'Wordlist generated and saved to {filename}')
